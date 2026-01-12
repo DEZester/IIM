@@ -1,0 +1,34 @@
+version: "3.8"
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: apps/web/Dockerfile
+      ports:
+        - "3000:3000"
+      volumes:
+        - .:/app
+        - /app/node_modules
+      environment:
+        - NODE_ENV=development
+  api:
+    build:
+      context: .
+      dockerfile: apps/api/Dockerfile
+      ports:
+        - "3001:3001"
+      volumes:
+        - .:/app
+        - /app/node_modules
+      environment:
+        - NODE_ENV=development
+
+  telemetry:
+    image: golang:1.25-alpine
+    volumes:
+      - .:/app/telemetry:/app
+    working_dir: /app
+    command: go run main.go
+    ports:
+      - "8080:8080"
