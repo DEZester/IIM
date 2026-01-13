@@ -5,6 +5,6 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.enableCors();
   await app.listen(3001);
-  console.log(`Application is running on: http://localhost:3001`);
+  console.log(`API Service is running on: http://localhost:3001`);
 }
 bootstrap();
