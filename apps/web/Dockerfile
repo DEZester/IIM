@@ -5,6 +5,7 @@ WORKDIR /app
 # Копируем корневые файлы для установки зависимостей
 COPY package*.json ./
 COPY apps/web/package*.json ./apps/web/
+COPY apps/api/package*.json ./apps/api/
 
 # Устанавливаем зависимости
 RUN npm install
